@@ -20,7 +20,7 @@ class ReleaseLoader(context: Context) {
             progress("Checking for updates…")
             val raw = download("manifest.json", 128 * 1024).toString(Charsets.UTF_8)
             val manifest = ReleaseManifest.parse(raw, shellVersion)
-            val active = verified(prefs.getString("active", null))
+            val active = verified(prefs.getString("active", null)) ?: verified(prefs.getString("previous", null))
             if (active?.name == manifest.release) return Result(active, false)
             val stage = File(root, "staging-${java.util.UUID.randomUUID()}").apply { mkdirs() }
             try {
@@ -40,7 +40,7 @@ class ReleaseLoader(context: Context) {
                 val destination = File(root, manifest.release)
                 if (destination.exists()) destination.deleteRecursively()
                 check(stage.renameTo(destination)) { "Could not activate release" }
-                val previous = active?.name ?: prefs.getString("active", null)
+                val previous = active?.name
                 check(prefs.edit().putString("previous", previous).putString("active", manifest.release).commit())
                 return Result(destination, false)
             } finally { stage.deleteRecursively() }
