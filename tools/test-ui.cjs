@@ -27,12 +27,12 @@ const assert = require('node:assert/strict');
   page.once('dialog',d=>d.accept());
   await page.getByRole('button',{name:'Reset local personalisation'}).click();
   await page.getByRole('heading',{name:'A little company, wherever you are.'}).waitFor();
-  await page.screenshot({path:'/tmp/aikumi-onboarding.png',fullPage:true});
+  await page.screenshot({path:'/tmp/aikumi-onboarding.png',fullPage:true,animations:'disabled'});
   await page.getByRole('button',{name:'Continue',exact:true}).click();
   await page.getByLabel('Your name (optional)').fill('Flynn');
   await page.getByRole('button',{name:'Continue',exact:true}).click();
   await page.getByRole('button',{name:'Meet Aikumi'}).click();
-  await page.screenshot({path:'/tmp/aikumi-chat.png',fullPage:true});
+  await page.screenshot({path:'/tmp/aikumi-chat.png',fullPage:true,animations:'disabled'});
   for (const viewport of [{width:320,height:568},{width:768,height:1024},{width:844,height:390}]) {
    await page.setViewportSize(viewport);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
