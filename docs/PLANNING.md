@@ -1,6 +1,6 @@
 # Aikumi Android — Living Plan
 
-Status: planning in progress; implementation and AAB build begin after the user finalises planning.
+Status: planning continues; the user authorised the startup/onboarding/chat foundation on 2026-11-16. Final AAB packaging follows planning finalisation.
 Last updated: 2026-11-16.
 
 ## Identity
@@ -14,6 +14,12 @@ Last updated: 2026-11-16.
 ## Workflow
 
 Record decisions and specifications in this repository as planning progresses. Keep confirmed requirements separate from proposals and unresolved decisions. Build the Android shell/AAB around the finalised plan. No implementation or production-ready release is implied by this document.
+
+## Implementation references
+
+- [Onboarding and chat design](ONBOARDING_AND_CHAT.md)
+- [Personality core](PERSONALITY_CORE.md)
+- [Foundation implementation and validation](FOUNDATION.md)
 
 ## Confirmed requirements
 
@@ -59,7 +65,7 @@ Record decisions and specifications in this repository as planning progresses. K
 ## Decisions still needed
 
 - Main UI, navigation, chat layout, onboarding, settings, and accessibility.
-- Aikumi's personality, voice, conversational behaviour, and boundaries.
+- Voice delivery and further conversational details; base personality is recorded in PERSONALITY_CORE.md.
 - Text and voice capabilities, model, audio pipeline, and permissions.
 - Trait schema, learning rules, user controls, reset/deletion, and request-context selection.
 - Repository visibility and client read authentication, especially for closed-test credentials.
@@ -75,3 +81,5 @@ Record decisions and specifications in this repository as planning progresses. K
 - 2026-11-16: User clarified that personal traits persist only locally.
 - 2026-11-16: User confirmed repository-held OpenAI key specifically for closed testing, with later AAB migration for public release.
 - 2026-11-16: User designated this repository for ongoing planning files; AAB construction follows planning finalisation.
+
+- 2026-11-16: User approved the Kotlin shell plus remotely loaded web interface, onboarding, chat styling, and beginning foundation implementation. Canva is the chosen provider for new art assets.

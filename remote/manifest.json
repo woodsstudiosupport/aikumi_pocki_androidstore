@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "minShellVersion": 1,
+  "release": "86ebec48630db9026994f0b91f11c2a303923ddc121167f89762701703966353",
+  "files": [
+    {
+      "path": "core/personality.json",
+      "sha256": "530ed66c4648562c9b89d03a5a71df6fbc83d4246103a88044839b7c7e689af4",
+      "bytes": 1327
+    },
+    {
+      "path": "ui/app.js",
+      "sha256": "201c9efb39f7b0f49e838e4aa977f63f28e1a8762231d747960284eed85adc47",
+      "bytes": 10225
+    },
+    {
+      "path": "ui/index.html",
+      "sha256": "4802c2fcf530772ddac42c06a8f814d07ad4279afb59fba43acc8bb7231a388d",
+      "bytes": 757
+    },
+    {
+      "path": "ui/state.js",
+      "sha256": "0d92b0a82dc8e2a41ef188dd06c4c92703cf82c9807e00f14410e3807cf4750c",
+      "bytes": 763
+    },
+    {
+      "path": "ui/style.css",
+      "sha256": "0ca4a41caff220279580e72ec16a6101d3843729d6bfa72f4f5e59f083abb57d",
+      "bytes": 5902
+    }
+  ]
+}
