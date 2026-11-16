@@ -50,7 +50,7 @@ async function transition(next, control) {
   if (control) control.disabled = true;
   const previous = { ...state };
   Object.assign(state, next);
-  try { await persist(); render(); }
+  try { await persist(); if (state.onboardingComplete) panel = 'main'; render(); }
   catch (_) { state = previous; if (control) control.disabled = false;
     const error = element('p', 'error', 'Couldn’t save that. Please try again.'); error.role = 'alert'; root.append(error); }
 }

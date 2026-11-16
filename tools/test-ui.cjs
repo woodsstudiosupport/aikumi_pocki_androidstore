@@ -41,7 +41,6 @@ const assert = require('node:assert/strict');
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
    await page.getByRole('button',{name:'Continue',exact:true}).click();
    await page.getByRole('button',{name:'Meet Aikumi'}).click();
-   await page.getByRole('button',{name:'Back to chat',exact:false}).click();
   }
   assert.deepEqual(errors,[]);
   // A separate browser context must start with no profile or onboarding completion.

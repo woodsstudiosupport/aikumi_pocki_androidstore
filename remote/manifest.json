@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "minShellVersion": 1,
-  "release": "86ebec48630db9026994f0b91f11c2a303923ddc121167f89762701703966353",
+  "release": "44f561745f10dceffcba3a7326916a6045a50cf7ed80044b664ed38597ffb5d4",
   "files": [
     {
       "path": "core/personality.json",
@@ -10,8 +10,8 @@
     },
     {
       "path": "ui/app.js",
-      "sha256": "201c9efb39f7b0f49e838e4aa977f63f28e1a8762231d747960284eed85adc47",
-      "bytes": 10225
+      "sha256": "908f9fa6782f45c4cfeaddfd04f3d5bb2374cd4c294c10a39972f1703262f818",
+      "bytes": 10271
     },
     {
       "path": "ui/index.html",

@@ -38,6 +38,10 @@ function click(w,text) {
  assert.equal(w.document.querySelector('h1').textContent,'Aikumi');
  assert.equal(w.document.querySelector('.send').disabled,true);
  assert.match(w.document.querySelector('.bubble').textContent,/drawing and games/);
+ w.document.querySelector('.menu').click(); await wait();
+ click(w,'Edit name and interests'); await wait();
+ click(w,'Continue'); await wait(); click(w,'Meet Aikumi'); await wait();
+ assert.equal(w.document.querySelector('h1').textContent,'Aikumi');
  const complete=w.sessionStorage.getItem('aikumi-preview'); dom.window.close();
  dom=boot(complete); w=dom.window; await wait();
  assert.equal(w.document.querySelector('h1').textContent,'Aikumi');
