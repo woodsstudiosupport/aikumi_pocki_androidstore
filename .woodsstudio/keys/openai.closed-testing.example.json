@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 1,
+  "provider": "openai",
+  "purpose": "closed-testing",
+  "apiKey": ""
+}
