@@ -19,6 +19,16 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm test
       - run: python tools/release.py --check
+      - run: npx playwright install --with-deps chromium
+      - name: Check browser flow
+        run: |
+          python -m http.server 8765 --directory remote > /tmp/aikumi-preview.log 2>&1 &
+          npm run test:browser
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aikumi-ui-screenshots
+          path: /tmp/aikumi-*.png
+          retention-days: 7
   android:
     runs-on: ubuntu-latest
     steps:
