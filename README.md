@@ -56,7 +56,11 @@ Optional real-browser checks: `npx playwright install chromium`, then `npm run t
 
 On Android, name, interests and onboarding choices are stored locally. Backup and device transfer are excluded. The history preference is saved, but history storage is not implemented because chat is not connected yet. Reset removes the current personalisation fields and returns to onboarding. No traits or messages are uploaded to this repository.
 
-The agreed closed-testing repository-key arrangement is recorded in the plan. This foundation contains **no OpenAI key, key file, GitHub token, or credentials**, and has no key retrieval or API request code yet. Repository-held client-readable keys are extractable. Key setup and public migration remain separate work.
+The closed-testing build can embed an OpenAI key at compile time. The public source contains no live key. Normal debug and release variants receive an empty value; only `closedTesting` uses `AIKUMI_TEST_OPENAI_KEY` from the build environment, and that variant refuses to build without it. Native code can access it through `TestingCredentials`; it is not exposed to the web interface.
+
+The private `aikumi_keyhold` repository owns the credential-bearing build workflow and private APK artifact. No GitHub credential is placed in the APK, and no backend or OpenLVT call is needed to read the embedded testing key. The OpenAI request/chat connection is still pending.
+
+For a local closed-testing build, set `AIKUMI_TEST_OPENAI_KEY` in the process environment, then run `./gradlew assembleClosedTesting` in `android/`. Do not put the key on a shell command line, in a committed file, or in public CI artifacts. Embedded keys remain extractable from an APK. Public-release key handling and release signing remain separate work.
 
 ## Artwork
 

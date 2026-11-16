@@ -2,7 +2,13 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+val testingApiKey = providers.environmentVariable("AIKUMI_TEST_OPENAI_KEY").orNull?.trim().orEmpty()
+require(testingApiKey.isEmpty() || Regex("sk-[A-Za-z0-9_-]+").matches(testingApiKey)) {
+    "The closed-testing key has an invalid format."
+}
+
 android {
+    buildFeatures { buildConfig = true }
     namespace = "com.woodsstudio.android.aikumi.pocket"
     compileSdk = 35
     defaultConfig {
@@ -11,6 +17,17 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0-dev"
+        buildConfigField("String", "OPENAI_API_KEY", "\"\"")
+    }
+    buildTypes {
+        create("closedTesting") {
+            initWith(getByName("debug"))
+            isDebuggable = false
+            versionNameSuffix = "-closed-testing"
+            matchingFallbacks += listOf("debug")
+            // Only this variant receives the build-time key. Never expose it to web UI.
+            buildConfigField("String", "OPENAI_API_KEY", "\"" + testingApiKey + "\"")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -22,4 +39,14 @@ dependencies {
     implementation("androidx.webkit:webkit:1.12.1")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.json:json:20240303")
+}
+
+tasks.configureEach {
+    if (name == "preClosedTestingBuild") {
+        doFirst {
+            require(testingApiKey.isNotEmpty()) {
+                "Closed-testing builds require AIKUMI_TEST_OPENAI_KEY in the build environment."
+            }
+        }
+    }
 }
