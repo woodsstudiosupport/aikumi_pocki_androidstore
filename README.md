@@ -56,7 +56,7 @@ Optional real-browser checks: `npx playwright install chromium`, then `npm run t
 
 On Android, name, interests and onboarding choices are stored locally. Backup and device transfer are excluded. The history preference is saved, but history storage is not implemented because chat is not connected yet. Reset removes the current personalisation fields and returns to onboarding. No traits or messages are uploaded to this repository.
 
-The closed-testing build can embed an OpenAI key at compile time. The public source contains no live key. Normal debug and release variants receive an empty value; only `closedTesting` uses `AIKUMI_TEST_OPENAI_KEY` from the build environment, and that variant refuses to build without it. Native code can access it through `TestingCredentials`; it is not exposed to the web interface.
+The closed-testing build can embed an OpenAI key at compile time. The build configuration does not commit the injected key to source. Normal debug and release variants receive an empty value; only `closedTesting` uses `AIKUMI_TEST_OPENAI_KEY` from the build environment, and that variant refuses to build without it. Native code can access it through `TestingCredentials`; it is not exposed to the web interface.
 
 The private `aikumi_keyhold` repository owns the credential-bearing build workflow and private APK artifact. No GitHub credential is placed in the APK, and no backend or OpenLVT call is needed to read the embedded testing key. The OpenAI request/chat connection is still pending.
 
