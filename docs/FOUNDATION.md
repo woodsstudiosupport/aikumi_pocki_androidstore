@@ -20,11 +20,19 @@
 - PASS: three JavaScript state-normalisation tests.
 - PASS: DOM flow checks for first install, onboarding resume, history default, repeat launch, safe user text rendering, reset, native-message contract.
 - PASS: deterministic runtime manifest regenerated and checked; Android resource compilation/linking checked separately with AAPT2 and an injected package name, as AGP normally supplies.
-- BLOCKED locally: full Gradle assembly could not resolve Android dependencies in this execution environment. A separate Kotlin compilation is not an APK build.
-- BLOCKED locally: real Chromium UI tests could not launch because the environment denied browser socket creation. DOM checks passed, but visual/device QA remains outstanding.
-- GitHub Actions workflow runs source checks and Android Gradle tests/debug assembly when pushed. Inspect its result before treating a debug APK as built.
+- PASS in GitHub Actions: full Gradle unit tests and debug APK assembly for commit `1065ebb5d39def0cb3f34c480a912e94986838f5`. Local dependency access was unavailable; the hosted build resolved that limitation.
+- PASS in GitHub Actions: real Chromium onboarding/chat flow checks at phone, tablet and landscape sizes. Screenshots at 390 × 844 were visually inspected; Android emulator/device QA remains outstanding.
+- [Successful foundation build and checks](https://github.com/woodsstudiosupport/aikumi_pocki_androidstore/actions/runs/43843777266). The workflow retains debug APK and screenshot artifacts for seven days.
 
-No final AAB, emulator test, or Play-ready release is claimed by this milestone.
+No final AAB, emulator test, or Play-ready release is claimed by this milestone. A debug APK is available in the successful workflow's artifacts.
+
+## Inspected interface screenshots
+
+These are browser captures of the implemented interface, not final character artwork.
+
+![First-launch onboarding](screenshots/onboarding.png)
+
+![Chat foundation](screenshots/chat.png)
 
 ## Limitations and next work
 
